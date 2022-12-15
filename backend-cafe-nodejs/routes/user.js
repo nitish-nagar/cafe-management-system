@@ -44,7 +44,7 @@ router.post("/login", (req, resp) => {
         if (!err) {
             if (results.length <= 0 || results[0].password != user.password)
                 return resp.status(401).json({ message: "Incorrect username or password" });
-            else if (results[0].status === 0) {
+            else if (results[0].status === 'false') {
                 return resp.status(401).json({ message: "Wait for admin approval" });
             }
             else if (results[0].password === user.password) {
